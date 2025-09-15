@@ -125,9 +125,9 @@ where
         #[serde(deny_unknown_fields)]
         struct EmptyStruct {}
 
-        use serde::__private::de;
+        use serde::{de::DeserializeSeed, __private::de::{self, ContentVisitor}};
 
-        let content = de::Content::deserialize(deserializer)?;
+        let content = ContentVisitor::new().deserialize(deserializer)?;
 
         let deserializer = de::ContentRefDeserializer::<D::Error>::new(&content);
 

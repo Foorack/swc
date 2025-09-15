@@ -378,7 +378,7 @@ pub fn expand(
                         #variants,
                     }
 
-                    let __content = <swc_common::private::serde::de::Content as serde::Deserialize>::deserialize(
+                    let __content = swc_common::private::serde::de::ContentVisitor::new().deserialize(
                                 __deserializer,
                             )?;
 
